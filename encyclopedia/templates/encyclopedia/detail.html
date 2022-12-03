@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    detail
+{% endblock %}
+
+{% block body %}
+
+<p id="file" style="display: none;">{{file}}</p>
+    
+<div id="content"></div>
+
+<script>
+    let file = $('#file').prop('firstChild').nodeValue;
+    $('#content').html(marked.parse(file));
+</script>
+
+{% endblock %}
+
+

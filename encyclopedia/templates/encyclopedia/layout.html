@@ -7,31 +7,55 @@
         <title>{% block title %}{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+        <link rel="shortcut icon" href="{%static "encyclopedia/favicon.ico" %}" />
     </head>
     <body>
         <div class="row">
             <div class="sidebar col-lg-2 col-md-3">
                 <h2>Wiki</h2>
-                <form>
+                <form action="/search">
                     <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
                 </form>
                 <div>
                     <a href="{% url 'index' %}">Home</a>
                 </div>
                 <div>
-                    Create New Page
+                    <a href="{% url 'newPage' %}">Create New Page</a>  
                 </div>
-                <div>
-                    Random Page
+                <div  id="Random-Page">
+                    <a href="{% url 'randomPage' %}">Random Page</a>
                 </div>
                 {% block nav %}
                 {% endblock %}
             </div>
             <div class="main col-lg-10 col-md-9">
+                <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.1/jquery.js"></script>
+                <script src="https://cdn.bootcdn.net/ajax/libs/marked/4.2.3/marked.min.js"></script>
                 {% block body %}
                 {% endblock %}
             </div>
         </div>
 
+        <script>
+            // function getRandom(min,max){
+            //     return Math.floor(Math.random()*(max-min+1))+min;
+            // }
+            // function select(arr){
+            //     const min = 0;
+            //     const max = arr.length;
+            //     return arr[getRandom(min,max-1)];
+            // }
+            // const RPage = document.querySelector('#Random-Page');
+            // let entriesStr = document.querySelector('#entries').firstChild.nodeValue;
+            // entriesStr = entriesStr.slice(2,entriesStr.length-2);
+            // const entriesList = entriesStr.split("', '");
+            // const selected = select(entriesList);
+            // console.log(selected);
+            // RPage.addEventListener('click',()=>{
+            //     console.log('click');
+            //     window.location.href = "{% url 'entry' name='HTML' %}";
+            // })
+        </script>
+        
     </body>
 </html>

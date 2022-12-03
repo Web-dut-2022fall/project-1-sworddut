@@ -1,0 +1,29 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+newPage
+{% endblock %}
+
+{% block body %}
+<style>
+    #title-input {
+
+        background-color: rgb(230, 225, 225);
+    }
+
+    textarea {
+        height: 500px;
+    }
+</style>
+
+<h1>请以markdown格式填写在以下textarea中</h1>
+<form action="/">
+    <h2>标题:</h2>
+    <input name="title" id="title-input" type="text">
+    <h3>内容:</h3>
+    <textarea name="content" id="title" cols="30" rows="10"></textarea>
+    <br>
+    <button type="submit">submit</button>
+</form>
+
+{% endblock %}

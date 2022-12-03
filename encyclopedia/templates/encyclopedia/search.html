@@ -1,0 +1,33 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+search
+{% endblock %}
+
+{% block body %}
+<div class="result">
+    <h1>Search Result:</h1>
+    <p id="entries" style="display: none;">{{titleLenth}}</p>
+
+    <ul>
+        {% for entry in entries %}
+        <li><a href="{% url 'entry' name=entry %}">{{ entry }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="no-result">
+    <h1>No Results Found!!</h1>
+</div>
+
+<script>
+    const titleLenth = parseInt($('#entries').prop('firstChild').nodeValue);
+    if(titleLenth === 0){
+        $('.result').hide();
+    }
+    else{
+        $('.no-result').hide();
+    }
+
+</script>
+{% endblock %}
